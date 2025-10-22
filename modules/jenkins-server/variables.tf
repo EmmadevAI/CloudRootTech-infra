@@ -1,7 +1,7 @@
 variable "ami_id" {
   description = "The AMI ID for the Jenkins server"
   type        = string
-  default     = "ami-0199d4b5b8b4fde0e"
+  default     = "ami-0d5d9d301c853a04a"
 }
 
 variable "instance_type" {

@@ -1,7 +1,7 @@
 variable "ami_id" {
   description = "The AMI ID for the Terraform node"
   type        = string
-  default     = "ami-0199d4b5b8b4fde0e"
+  default     = "ami-03c983f9003cb9cd1"
 }
 
 variable "instance_type" {
