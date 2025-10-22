@@ -110,7 +110,7 @@ module "eks" {
       principal_arn     = "arn:aws:iam::413026843685:user/Emmanuel"
       policy_associations = [
         {
-          policy_arn  = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+          policy_arn   = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
           access_scope = { type = "cluster" }
         }
       ]
@@ -121,7 +121,7 @@ module "eks" {
       principal_arn     = "arn:aws:iam::413026843685:role/github-runner-ssm-role"
       policy_associations = [
         {
-          policy_arn  = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+          policy_arn   = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
           access_scope = { type = "cluster" }
         }
       ]
