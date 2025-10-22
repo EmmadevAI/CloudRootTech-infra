@@ -7,7 +7,7 @@ variable "ami_id" {
 variable "instance_type" {
   description = "The instance type for the Terraform node"
   type        = string
-  default     = "t2.medium"
+  default     = "t2.micro"
 }
 
 variable "key_name" {
