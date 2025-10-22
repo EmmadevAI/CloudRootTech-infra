@@ -5,7 +5,7 @@
 variable "aws_account_id" {
   description = "AWS Account ID"
   type        = string
-  default     = "327019199684"
+  default     = "413026843685"
 }
 
 variable "aws_region" {
@@ -97,7 +97,7 @@ variable "san_domains" {
 variable "route53_zone_id" {
   description = "Route 53 hosted zone ID for domain validation"
   type        = string
-  default     = "ZC7WDABJDII2"
+  default     = "Z00957293IZDKYCX9KGE6"
 }
 
 ################################################################################
