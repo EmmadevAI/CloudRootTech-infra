@@ -32,7 +32,6 @@ module "eks" {
   enable_cluster_creator_admin_permissions = true
   cluster_endpoint_public_access           = true
 
-  # ✅ Let Terraform manage add-ons
   bootstrap_self_managed_addons = true
 
   vpc_id                   = var.vpc_id
@@ -41,7 +40,6 @@ module "eks" {
 
   cluster_additional_security_group_ids = var.security_group_ids
 
-  # ✅ Enable CloudWatch logging
   create_cloudwatch_log_group = true
   cluster_enabled_log_types   = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
 
@@ -77,7 +75,7 @@ module "eks" {
   }
 
   ##############################################
-  # Managed Node Groups - Best Practice
+  # Managed Node Groups
   ##############################################
   eks_managed_node_group_defaults = {
     ami_type       = "AL2023_x86_64_STANDARD"
@@ -102,19 +100,19 @@ module "eks" {
   }
 
   ##############################################
-  # Access entries (IAM Identity Center or user/role mapping)
+  # Access entries (Commented Emmanuel user)
   ##############################################
   access_entries = {
-    Emmanuel = {
-      kubernetes_groups = ["eks-admins"]
-      principal_arn     = "arn:aws:iam::413026843685:user/NewEmmanuel"
-      policy_associations = [
-        {
-          policy_arn   = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
-          access_scope = { type = "cluster" }
-        }
-      ]
-    }
+    # Emmanuel = {
+    #   kubernetes_groups = ["eks-admins"]
+    #   principal_arn     = "arn:aws:iam::413026843685:user/NewEmmanuel"
+    #   policy_associations = [
+    #     {
+    #       policy_arn   = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+    #       access_scope = { type = "cluster" }
+    #     }
+    #   ]
+    # }
 
     github_runner = {
       kubernetes_groups = ["eks-admins"]
@@ -132,7 +130,7 @@ module "eks" {
 }
 
 ##############################################
-# RBAC Bindings with depends_on
+# RBAC Bindings
 ##############################################
 
 resource "kubernetes_cluster_role_binding" "platform_admins_binding" {
@@ -176,7 +174,7 @@ resource "kubernetes_cluster_role_binding" "eks_admins_binding" {
 }
 
 ##############################################
-# Kubernetes Namespaces with depends_on
+# Kubernetes Namespaces
 ##############################################
 
 resource "kubernetes_namespace" "fintech" {
